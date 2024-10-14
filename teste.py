@@ -40,13 +40,13 @@ def CalculaFrequenciaAngular(f):
 
 # Funções para calcular transformador em série e paralelo
 def CalcularTransformadorSerie(Uf, Rc, Rbobina1, Rbobina2, XL, XC, XM):
-    Z = np.array([[Rbobina1 + XC + XL, -XM], [-XM, Rbobina2 + Rc + XC + XL]])
+    Z = np.array([[Rbobina1, -XM], [-XM, Rbobina2 + Rc ]])
     V = np.array([Uf, 0])
     i = np.dot(linalg.inv(Z), V)
     return i[0], i[1]
 
 def CalcularTransformadorParalelo(Uf, Rc, Rbobina1, Rbobina2, XL, XC, XM, ZP):
-    Z = np.array([[Rbobina1 + XC + XL, -XM], [-XM, Rbobina2 + ZP + XL]])
+    Z = np.array([[Rbobina1, -XM], [-XM, Rbobina2 + ZP + XL]])
     V = np.array([Uf, 0])
     i = np.dot(linalg.inv(Z), V)
     return i[0], i[1]
